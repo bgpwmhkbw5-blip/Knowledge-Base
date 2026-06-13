@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#313338">
+
+    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="manifest" href="manifest.json">
+
+    <title>Knowledge Discord</title>
+</head>
+<body>
+    <main id="app" aria-label="Knowledge Discord">
+        <aside id="servers" aria-label="Servers"></aside>
+
+        <aside id="sidebar" aria-label="Channels">
+            <header class="sidebarHeader">
+                <div>
+                    <p class="eyebrow">Private workspace</p>
+                    <h1>Knowledge</h1>
+                </div>
+                <button id="newServerBtn" type="button" title="New workspace">+</button>
+            </header>
+
+            <div class="sidebarTools">
+                <button id="newCategoryBtn" type="button">Folder</button>
+                <button id="newChannelBtn" type="button">Channel</button>
+                <button id="randomChannelBtn" type="button">Random channel</button>
+            </div>
+
+            <nav id="channels" aria-label="Channel list"></nav>
+
+            <section id="privacyPanel" aria-label="Privacy and storage">
+                <p>Local-only single-user storage. Notes and pasted images stay in this browser on this device.</p>
+                <p>External embeds may contact their original host when displayed.</p>
+                <p id="storageInfo">Storage: checking</p>
+                <div class="randomRange">
+                    <label>
+                        <span>Min</span>
+                        <input id="randomMin" type="number" inputmode="numeric">
+                    </label>
+                    <label>
+                        <span>Max</span>
+                        <input id="randomMax" type="number" inputmode="numeric">
+                    </label>
+                    <button id="randomNumberBtn" type="button">Roll</button>
+                    <output id="randomNumberResult"></output>
+                </div>
+            </section>
+        </aside>
+
+        <section id="chat" aria-label="Notes">
+            <header id="topbar">
+                <div>
+                    <h2 id="activeTitle">Loading</h2>
+                    <p id="activeMeta"></p>
+                </div>
+
+                <div class="topActions">
+                    <button id="randomMessageBtn" type="button">Random note</button>
+                    <button id="deleteChannelBtn" class="dangerAction" type="button">Delete channel</button>
+                    <label class="searchWrap">
+                        <span>Search</span>
+                        <input id="searchInput" type="search" placeholder="Search notes, images, or #tags">
+                    </label>
+                </div>
+            </header>
+
+            <div id="messages" aria-live="polite"></div>
+
+            <form id="input-bar" onsubmit="return false;">
+                <div id="attachmentPreview" aria-live="polite"></div>
+                <textarea id="noteInput" autocomplete="off" rows="1" placeholder="Write a note, paste an image, or add #tags"></textarea>
+                <input id="imageInput" type="file" accept="image/*" multiple hidden>
+                <button id="attachImageBtn" type="button">Image</button>
+                <button id="sendBtn" type="button">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="db.js?v=5" defer></script>
+    <script src="app.js?v=5" defer></script>
+</body>
+</html>
